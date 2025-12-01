@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { config } from "@/wagmi";
 import { readContract } from "@wagmi/core";
 
-export function useRaffleRead(functionName) {
+export function useRaffleRead(functionName: string) {
   const result = useReadContract({
     abi,
     address: CONTRACT_ADDRESS,

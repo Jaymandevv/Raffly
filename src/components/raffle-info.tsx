@@ -64,7 +64,7 @@ function RaffleInfo() {
           </div>
 
           <div>
-               <Timer status={status} />
+               <Timer status={status as number} />
           </div>
      </div >)
 }

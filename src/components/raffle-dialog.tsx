@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "./ui/dialog"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
@@ -23,7 +23,7 @@ function EnterRaffleDialog({ status, isPlayer }: { status: number, isPlayer: boo
      const { writeContractAsync, isPending } = useWriteContract()
 
 
-     const _handleOnChange = (e) => {
+     const _handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
           setValue(e.target.value)
      }
 
