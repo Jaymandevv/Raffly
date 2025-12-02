@@ -30,7 +30,6 @@ export function usePlayersList() {
         timeEntered: bigint;
       }[];
     },
-    refetchInterval: 10_000,
   });
 
   return data;

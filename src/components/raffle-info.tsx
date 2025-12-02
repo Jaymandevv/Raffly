@@ -5,12 +5,12 @@ import EnterRaffleDialog from "./raffle-dialog";
 import Timer from "./timer";
 import { CONTRACT_ADDRESS } from "@/lib/constant";
 import { useAccount, useBalance, useWatchContractEvent } from "wagmi";
-import { useEffect } from "react";
 import { Loader2Icon } from "lucide-react";
-import abi from "@/abi/Raffly.json"
+import abi from "@/abi/Raffly.json";
+import { useEffect } from "react";
 
 
-const RAFFLE_STATUS = ["Open", "Calculating"]
+const RAFFLE_STATUS = ["open", "calculating"]
 
 
 function RaffleInfo() {
@@ -29,17 +29,26 @@ function RaffleInfo() {
           eventName: "WinnerPicked",
           onLogs: () => {
                refetchStatus();
+               refetch();
+          },
+     });
+     useWatchContractEvent({
+          address: CONTRACT_ADDRESS,
+          abi,
+          eventName: "RaffleEntered",
+          onLogs: () => {
+               refetch()
           },
      });
 
 
      useEffect(() => {
           const interval = setInterval(() => {
-               refetch();
-          }, 10000);
+               refetchStatus();
+          }, 5_000);
 
           return () => clearInterval(interval);
-     }, [refetch]);
+     }, [refetchStatus]);
 
      return (<div className="bg-gradient-to-br from-black via-[#0B5FFF] to-[#093B8D] flex justify-between rounded-lg items-center px-4 py-3 mt-6 text-white">
           <div className="space-y-2">

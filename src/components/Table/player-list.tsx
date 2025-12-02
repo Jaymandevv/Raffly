@@ -1,12 +1,33 @@
+import { useWatchContractEvent } from "wagmi";
 import { Table, TableBody, TableCaption, TableHead, TableHeader, TableRow } from "../ui/table";
 import PlayerRow from "./player-row";
 import { usePlayersList } from "@/lib/raffle";
+import { CONTRACT_ADDRESS } from "@/lib/constant";
+import abi from "@/abi/Raffly.json"
 
 
 
 function PlayersList() {
 
-     const { data: players } = usePlayersList()
+     const { data: players, refetch } = usePlayersList()
+
+     useWatchContractEvent({
+          address: CONTRACT_ADDRESS,
+          abi,
+          eventName: "RaffleEntered",
+          onLogs: () => {
+               refetch()
+          },
+     });
+     useWatchContractEvent({
+          address: CONTRACT_ADDRESS,
+          abi,
+          eventName: "WinnerPicked",
+          onLogs: () => {
+               refetch()
+          },
+     });
+
 
      return (
           <Table>
