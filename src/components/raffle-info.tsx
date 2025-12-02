@@ -61,7 +61,7 @@ function RaffleInfo() {
                     </div>
 
                     <div className="self-start flex items-center gap-1">
-                         <div className={`h-2 w-2 rounded-full ${RAFFLE_STATUS[status as number] === "Open" ? "bg-green-500" : "bg-rose-500"}`}></div>
+                         <div className={`h-2 w-2 rounded-full ${RAFFLE_STATUS[status as number] === "open" ? "bg-green-500" : "bg-rose-500"}`}></div>
                          <p>{RAFFLE_STATUS[status as number]}</p>
                     </div>
 
