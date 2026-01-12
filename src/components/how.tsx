@@ -31,9 +31,9 @@ function How() {
 
      return (<Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger>
-               <Button className="cursor-pointer">How it works</Button>
+               <Button className="!text-xs mobile:text-base cursor-pointer bg-black">How it works</Button>
           </DialogTrigger>
-          <DialogContent>
+          <DialogContent className="bg-white">
                <DialogHeader>
                     <DialogTitle>How it works</DialogTitle>
                     <DialogDescription>

@@ -50,7 +50,7 @@ function RaffleInfo() {
           return () => clearInterval(interval);
      }, [refetchStatus]);
 
-     return (<div className="bg-gradient-to-br from-black via-[#0B5FFF] to-[#093B8D] flex justify-between rounded-lg items-center px-4 py-3 mt-6 text-white">
+     return (<div className="bg-gradient-to-br from-black via-[#0B5FFF] to-[#093B8D] flex justify-between rounded-lg items-center px-4 py-3 mt-6 text-white flex-col gap-3 mobile:gap-0 mobile:flex-row">
           <div className="space-y-2">
                <div className="flex gap-4">
                     <div>

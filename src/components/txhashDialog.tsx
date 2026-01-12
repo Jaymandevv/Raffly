@@ -10,7 +10,7 @@ interface TxHashDialogProp {
 
 function TxHashDialog({ hash, openHash, setOpenHash }: TxHashDialogProp) {
      return (<Dialog open={openHash} onOpenChange={setOpenHash}>
-          <DialogContent className="backdrop-blur-xl border border-white/20" >
+          <DialogContent className="backdrop-blur-xl border border-white/20 bg-white" >
                <div>
                     <h1 className="text-center font-semibold text-lg">
                          Transaction successful ✅

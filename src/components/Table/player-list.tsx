@@ -4,6 +4,7 @@ import PlayerRow from "./player-row";
 import { usePlayersList } from "@/lib/raffle";
 import { CONTRACT_ADDRESS } from "@/lib/constant";
 import abi from "@/abi/Raffly.json"
+import { useEffect } from "react";
 
 
 
@@ -28,10 +29,18 @@ function PlayersList() {
           },
      });
 
+     useEffect(() => {
+          const intervalId = setInterval(() => {
+               refetch();
+          }, 60_000);
+
+          return () => clearInterval(intervalId);
+     }, [refetch]);
+
 
      return (
-          <Table>
-               <TableCaption>A list of Players that entered the Raffle.</TableCaption>
+          <Table className="overflow-x-scroll h-full">
+               <TableCaption className="mt-auto">A list of Players that entered the Raffle.</TableCaption>
                <TableHeader>
                     <TableRow>
                          <TableHead className=""></TableHead>
@@ -45,12 +54,6 @@ function PlayersList() {
                          <PlayerRow player={player} index={index} key={index} />
                     ))}
                </TableBody>
-               {/* <TableFooter>
-                    <TableRow>
-                         <TableCell colSpan={3}>Total</TableCell>
-                         <TableCell className="text-right">$2,500.00</TableCell>
-                    </TableRow>
-               </TableFooter> */}
           </Table>
      )
 }

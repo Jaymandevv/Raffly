@@ -4,7 +4,7 @@ import Header from "./header";
 
 export default function Home() {
      return (
-          <div className="h-screen bg-gray-950 text-white flex flex-col px-8 py-4">
+          <div className="h-screen bg-gray-950 text-white flex flex-col px-2 mobile:px-8 py-4">
                <Header />
                <div className="h-screen max-w-full flex flex-col items-center mt-8">
                     <div className="text-center flex flex-col mt-8">

@@ -52,9 +52,9 @@ function EnterRaffleDialog({ status, isPlayer }: { status: number, isPlayer: boo
           <>
                <Dialog open={open} onOpenChange={setOpen}>
                     <DialogTrigger disabled={status === 1 || isPlayer}>
-                         <Button className="cursor-pointer" disabled={status === 1 || isPlayer}>Enter Raffle</Button>
+                         <Button className="!text-xs bg-black mobile:text-base cursor-pointer" disabled={status === 1 || isPlayer}>Enter Raffle</Button>
                     </DialogTrigger>
-                    <DialogContent>
+                    <DialogContent className="bg-white">
                          <DialogHeader>
                               Enter Raffle
                          </DialogHeader>
@@ -63,7 +63,7 @@ function EnterRaffleDialog({ status, isPlayer }: { status: number, isPlayer: boo
                                    <Label htmlFor="amount">Amount</Label>
                                    <Input placeholder="Enter amount" id="amount" onChange={(e) => _handleOnChange(e)} value={value} />
                               </div>
-                              <Button onClick={handleEnterRaffle} disabled={isPending} className="self-start">{isPending ? "Entering.." : "Enter"}</Button>
+                              <Button onClick={handleEnterRaffle} disabled={isPending} className="bg-black text-white self-start">{isPending ? "Entering.." : "Enter"}</Button>
                          </div>
 
 

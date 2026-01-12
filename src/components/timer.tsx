@@ -32,7 +32,7 @@ export default function Timer({ status }: { status: number }) {
 
 
      useEffect(() => {
-          if (!lastTimestamp || !interval) return;
+          if (status !== 0 || !lastTimestamp || !interval) return;
 
           const endTime = (Number(lastTimestamp) + Number(interval)) * 1000;
 
@@ -44,7 +44,13 @@ export default function Timer({ status }: { status: number }) {
           updateCountdown();
           const intervalId = setInterval(updateCountdown, 1000);
           return () => clearInterval(intervalId);
-     }, [lastTimestamp, interval]);
+     }, [lastTimestamp, interval, status]);
+
+     useEffect(() => {
+          if (status !== 0) {
+               setTimeLeft(0);
+          }
+     }, [status]);
 
      const hours = Math.floor(timeLeft / (1000 * 60 * 60));
      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
@@ -67,7 +73,7 @@ export default function Timer({ status }: { status: number }) {
                               ].map((t) => (
                                    <div
                                         key={t.label}
-                                        className="flex flex-col justify-between items-center p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg mt-4"
+                                        className="flex flex-col justify-between items-center p-2 rounded-sm text-xs md:text-base  md:p-6 md:rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg mt-4"
                                    >
                                         <span>{String(t.value).padStart(2, "0")}</span>
                                         <span>{t.label}</span>
