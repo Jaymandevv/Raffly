@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import { useReadContract, useWatchContractEvent } from "wagmi";
 import abi from "@/abi/Raffly.json";
 import { CONTRACT_ADDRESS } from "@/lib/constant";
+import { usePlayersList } from "@/lib/raffle";
 
 export default function Timer({ status }: { status: number }) {
      const [timeLeft, setTimeLeft] = useState(0);
+
+     const { data: players } = usePlayersList()
 
      const { data: lastTimestamp, refetch: refetchTimestamp } = useReadContract({
           address: CONTRACT_ADDRESS,
@@ -32,7 +35,7 @@ export default function Timer({ status }: { status: number }) {
 
 
      useEffect(() => {
-          if (status !== 0 || !lastTimestamp || !interval) return;
+          if (players?.length === 0 || status !== 0 || !lastTimestamp || !interval) return;
 
           const endTime = (Number(lastTimestamp) + Number(interval)) * 1000;
 

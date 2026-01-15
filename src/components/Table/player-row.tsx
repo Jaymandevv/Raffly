@@ -11,7 +11,6 @@ function timeAgo(timestamp: bigint) {
 }
 function PlayerRow({ player, index }: PlayerRowProp) {
 
-     console.log(typeof index)
      return (<TableRow key={player.playerAddress}>
           <TableCell className="font-medium">{index + 1}</TableCell>
           <TableCell className="font-medium">{player.playerAddress}</TableCell>

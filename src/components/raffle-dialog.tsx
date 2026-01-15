@@ -62,6 +62,7 @@ function EnterRaffleDialog({ status, isPlayer }: { status: number, isPlayer: boo
                               <div className="space-y-2">
                                    <Label htmlFor="amount">Amount</Label>
                                    <Input placeholder="Enter amount" id="amount" onChange={(e) => _handleOnChange(e)} value={value} />
+                                   <p className="text-xs italic">Please enter a minimum of 0.01 ETH</p>
                               </div>
                               <Button onClick={handleEnterRaffle} disabled={isPending} className="bg-black text-white self-start">{isPending ? "Entering.." : "Enter"}</Button>
                          </div>

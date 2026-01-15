@@ -8,6 +8,8 @@ import { useAccount, useBalance, useWatchContractEvent } from "wagmi";
 import { Loader2Icon } from "lucide-react";
 import abi from "@/abi/Raffly.json";
 import { useEffect } from "react";
+import ResultModal from "./result-modal";
+
 
 
 const RAFFLE_STATUS = ["open", "calculating"]
@@ -22,6 +24,8 @@ function RaffleInfo() {
      })
      const { address } = useAccount()
      const isPlayer = players?.map(player => player.playerAddress).includes(address as string);
+
+
 
      useWatchContractEvent({
           address: CONTRACT_ADDRESS,
@@ -69,6 +73,7 @@ function RaffleInfo() {
                <div className="flex gap-2">
                     <How />
                     <EnterRaffleDialog status={status as number} isPlayer={isPlayer as boolean} />
+                    <ResultModal />
                </div>
           </div>
 
