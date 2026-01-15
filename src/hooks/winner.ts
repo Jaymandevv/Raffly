@@ -2,6 +2,13 @@ import { useAccount, useWatchContractEvent } from "wagmi";
 import { useState } from "react";
 import abi from "@/abi/Raffly.json";
 import { CONTRACT_ADDRESS } from "@/lib/constant";
+import type { Log } from "viem";
+
+type WinnerPickedLog = Log & {
+  args: {
+    recentWinner: `0x${string}`;
+  };
+};
 
 export function useWinnerModal() {
   const { address } = useAccount();
@@ -16,7 +23,7 @@ export function useWinnerModal() {
     onLogs(logs) {
       if (!address) return;
 
-      const log = logs[0];
+      const log = logs[0] as WinnerPickedLog;
 
       const winner = log.args.recentWinner as string;
       const roundId = log.blockNumber !== null ? log.blockNumber.toString() : "pending";
